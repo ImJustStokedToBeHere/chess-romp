@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chess-romp-wpf", "chess-romp-wpf\chess-romp-wpf.csproj", "{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chess-romp-cons", "chess-romp-cons\chess-romp-cons.csproj", "{4043AD4F-83DF-4D62-A875-39108CCCA780}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49D580C9-0FEA-46EE-930C-B1ABE8F439A1}
+	EndGlobalSection
+EndGlobal
