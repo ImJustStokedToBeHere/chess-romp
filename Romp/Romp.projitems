@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8aab9475-7101-44d7-8f64-2367aa3b710f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Romp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameRecords.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Move.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Types.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameBoard.cs" />
+  </ItemGroup>
+</Project>

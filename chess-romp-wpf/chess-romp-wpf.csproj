@@ -7,4 +7,6 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <Import Project="..\Romp\Romp.projitems" Label="Shared" />
+
 </Project>

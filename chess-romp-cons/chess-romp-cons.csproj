@@ -6,4 +6,6 @@
     <RootNamespace>chess_romp_cons</RootNamespace>
   </PropertyGroup>
 
+  <Import Project="..\Romp\Romp.projitems" Label="Shared" />
+
 </Project>
