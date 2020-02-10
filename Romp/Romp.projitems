@@ -10,7 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameRecords.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameRecord.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameRecordFileReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PortableGameNotation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Move.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Types.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameBoard.cs" />
