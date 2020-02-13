@@ -4,6 +4,15 @@ using System.Text;
 
 namespace Romp
 {
+    [Flags]
+    enum CastlingRights
+    {
+        WhiteKing,
+        WhiteQueen,
+        BlackKing,
+        BlackQueen
+    }
+
     enum Color
     {
         Black,
@@ -51,6 +60,7 @@ namespace Romp
         Unknown
     }
 
+    [Flags]
     enum SpecialtyMove : Byte
     {
         Quiet = 0x0,
@@ -70,6 +80,7 @@ namespace Romp
         Unknown
     }
 
+    [Flags]
     enum MoveType
     {
         Captures,
@@ -104,14 +115,14 @@ namespace Romp
 
     enum File : Byte
     {
-        _A = 0,
-        _B = 1,
-        _C = 2,
-        _D = 3,
-        _E = 4,
-        _F = 5,
-        _G = 6,
-        _H = 7
+        A = 0,
+        B = 1,
+        C = 2,
+        D = 3,
+        E = 4,
+        F = 5,
+        G = 6,
+        H = 7
     }
 
     static class Utils
@@ -131,7 +142,7 @@ namespace Romp
             return c == Color.White ? Direction.North : Direction.South;
         }
 
-        public static UInt64 ClearRank(Rank r, UInt64 board)
+        public static ulong ClearRank(Rank r, ulong board)
         {
             return board & Constants.ClearRanks[(int)r];
         }

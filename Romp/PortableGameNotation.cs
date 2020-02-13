@@ -89,7 +89,11 @@ namespace Romp
                         _ = (char)_reader.Read();
                             
                     gameStr = _reader.ReadLine();
-                    _reader.ReadLine();
+
+                    // just incase the last new line is trimmed from the file
+                    if (!_reader.EndOfStream)
+                        _reader.ReadLine();
+
                     break;
                 }
                 else
@@ -107,14 +111,13 @@ namespace Romp
         public GameRecord_PGN(List<string> fieldNames, List<string> values, string gameStr, long filePos, int recordIdx)
             : base(fieldNames, values, gameStr, filePos, recordIdx) {}
 
+        // rebuild the PGN formatted string from the data
         public override string ToString()
         {
             var result = new StringBuilder();
 
             for (int i = 0; i < FieldNames.Count; i++)
-            {
                 result.AppendLine($"[{FieldNames[i]} \"{FieldValues[i]}\"]");
-            }
 
             result.AppendLine();
             result.AppendLine(GameString);

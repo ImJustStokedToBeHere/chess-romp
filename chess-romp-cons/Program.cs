@@ -3,10 +3,10 @@ using Romp;
 
 namespace RompCons
 {
-    class Program {
-
-
-        static void Main(string[] args) {
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
             const string FILEPATH = @"C:\Users\JoeVidunas\source\repos\chess-romp\data\test.pgn";
 

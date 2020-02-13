@@ -5,10 +5,10 @@ using System.Text;
 namespace Romp
 {
     static class Constants
-    {
+    {        
         public const Byte NULL_SQUARE = 65;
 
-        public static UInt64[] BitPositions = 
+        public static ulong[] BitPositions = 
         {
              0x0000000000000001,
              0x0000000000000002,
@@ -88,7 +88,7 @@ namespace Romp
             "A8", "B8", "C8", "D8", "E8", "F8", "G8", "H8"
         };
 
-        public static readonly UInt64[] ClearRanks = 
+        public static readonly ulong[] ClearRanks = 
         {
             0xFFFFFFFFFFFFFF00,
             0xFFFFFFFFFFFF00FF,
@@ -100,7 +100,7 @@ namespace Romp
             0x00FFFFFFFFFFFFFF
         };
 
-        public static readonly UInt64[] MaskRanks =
+        public static readonly ulong[] MaskRanks =
         {
             ~Constants.ClearRanks[0],
             ~Constants.ClearRanks[1],
@@ -112,7 +112,7 @@ namespace Romp
             ~Constants.ClearRanks[7]
         };
 
-        public static readonly UInt64[] ClearFiles = 
+        public static readonly ulong[] ClearFiles = 
         {
             0xFEFEFEFEFEFEFEFE,
             0xFDFDFDFDFDFDFDFD,
@@ -124,7 +124,7 @@ namespace Romp
             0x7F7F7F7F7F7F7F7F
         };
 
-        public static readonly UInt64[] MaskFiles =
+        public static readonly ulong[] MaskFiles =
         {
             ~Constants.ClearFiles[0],
             ~Constants.ClearFiles[1],
@@ -135,8 +135,5 @@ namespace Romp
             ~Constants.ClearFiles[6],
             ~Constants.ClearFiles[7]
         };
-
-
-
     }
 }
