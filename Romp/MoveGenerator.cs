@@ -18,14 +18,8 @@ namespace Romp
                 var pieces = board.Pieces(state.SideToMove, p);
                 if (state.SideToMove == Color.Black)
                 {
-                    // we need to rotate the board 180 if so
-                    
-
-
-
-
-
-
+                    // we need to rotate the board 180 
+                
                 }
 
             }
