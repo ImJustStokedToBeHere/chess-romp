@@ -58,8 +58,18 @@ namespace Romp
             return HorizontalFlip(VerticalFlip(board));
         }
 
+        public static string ReverseString(string s)
+        {
+            var chars = new char[s.Length];
+            int fwd = 0;
+            for (int i = s.Length; i >= 0; i--)
+                chars[fwd++] = s[i];
+
+            return new string(chars);
+        }
+
         // HACK: this is probably the slowest way I could possibly do this but it's not going to be used very often
-        public static string DisplayAsBinaryBoard(ulong board)
+        public static string DisplayAsBinaryBoard(ulong board, bool insertSpaces)
         {
             var binary = Convert.ToString((long)board, 2).PadLeft(64, '0');
             var sb = new StringBuilder();
@@ -73,7 +83,7 @@ namespace Romp
 
                     for (int j = 7; j > -1; j--)
                     {
-                        if (j == 0)
+                        if (j == 0 || !insertSpaces)
                             s2 += s[j];
                         else
                             s2 += s[j] + " ";
