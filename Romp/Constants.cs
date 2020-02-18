@@ -135,5 +135,8 @@ namespace Romp
             ~Constants.ClearFiles[6],
             ~Constants.ClearFiles[7]
         };
+
+        public const ulong BLACK_SQUARES = 0xAA55AA55AA55AA55;
+        public const ulong WHITE_SQUARES = ~BLACK_SQUARES;
     }
 }

@@ -9,7 +9,10 @@
     <Import_RootNamespace>Romp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Bits.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FENTranslator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameRecord.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameRecordFileReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MoveGenerator.cs" />

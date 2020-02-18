@@ -13,10 +13,12 @@ namespace Romp
         BlackQueen
     }
 
+    [Flags]
     enum Color
     {
+        White,
         Black,
-        White
+        All
     }
 
     enum Piece
@@ -101,27 +103,44 @@ namespace Romp
         A8, B8, C8, D8, E8, F8, G8, H8
     }
 
-    enum Rank : Byte
+    static class Pieces
     {
-        _1 = 0,
-        _2 = 1,
-        _3 = 2,
-        _4 = 3,
-        _5 = 4,
-        _6 = 5,
-        _7 = 6,
-        _8 = 7
+        public const int WHITE = 0;
+        public const int BLACK = 1;
+
+        public const int PAWN = 0;
+        public const int ROOK = 1;
+        public const int KNIGHT = 2;
+        public const int BISHOP = 3;
+        public const int QUEEN = 4;
+        public const int KING = 5;
     }
 
-    enum File : Byte
-    {
-        A = 0,
-        B = 1,
-        C = 2,
-        D = 3,
-        E = 4,
-        F = 5,
-        G = 6,
-        H = 7
-    }
+    /*
+     Removing this stuff as it isn't as useful as imagined. It's not very functional.
+
+     */
+    //enum Rank : Byte
+    //{
+    //    _1 = 0,
+    //    _2 = 1,
+    //    _3 = 2,
+    //    _4 = 3,
+    //    _5 = 4,
+    //    _6 = 5,
+    //    _7 = 6,
+    //    _8 = 7
+    //}
+
+    //enum File : Byte
+    //{
+    //    A = 0,
+    //    B = 1,
+    //    C = 2,
+    //    D = 3,
+    //    E = 4,
+    //    F = 5,
+    //    G = 6,
+    //    H = 7
+    //}
 }

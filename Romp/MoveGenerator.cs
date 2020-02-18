@@ -15,12 +15,32 @@ namespace Romp
 
             foreach (PieceType p in Enum.GetValues(typeof(PieceType)))
             {
-                var pieces = board.Pieces(state.SideToMove, p);
-                if (state.SideToMove == Color.Black)
+                var pieces = board.GetPieces(state.SideToMove, p);
+                if (state.SideToMove == Color.Black)                
+                    pieces = Bits.Rotate180(pieces);
+
+                switch (p)
                 {
-                    // we need to rotate the board 180 
-                
+                    case PieceType.Pawn:
+                        break;
+                    case PieceType.Rook:
+                        break;
+                    case PieceType.Knight:
+                        break;
+                    case PieceType.Bishop:
+                        break;
+                    case PieceType.Queen:
+                        break;
+                    case PieceType.King:
+                        break;
+                    default:
+                        break;
                 }
+
+
+
+
+
 
             }
 

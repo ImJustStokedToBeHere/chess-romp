@@ -37,16 +37,11 @@ namespace RompCons
             //Console.Write(got.ToString());
 
             ulong white = 0x00000000000011FF;
-            Console.WriteLine("==================================================================");
-
-            Console.WriteLine(Utils.DisplayAsBinaryBoard(white));
+            white = 0x0101010101010100;
 
             Console.WriteLine("==================================================================");
-
-            Console.WriteLine(Utils.DisplayAsBinaryBoard(Utils.VerticalFlip(white)));
-
-            Console.WriteLine("==================================================================");
-            
+            Console.WriteLine(Utils.DisplayAsBinaryBoard(white, true));
+            Console.WriteLine("==================================================================");         
         }
     }
 }
