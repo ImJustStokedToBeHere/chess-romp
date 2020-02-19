@@ -11,12 +11,18 @@ namespace Romp
 
         public Move() { }
 
-        public Move(Square src, Square dest, PieceType type, SpecialtyMove spMove)
+        public Move(Square dest, Square src, PieceType type, SpecialtyMove spMove)
         {
             Src = src;
             Dest = dest;
             Type = type;
             Specialty = spMove;
+        }
+
+        public Move(int dest, int src, PieceType type, SpecialtyMove spMove)
+            : this((Square)dest, (Square)src, type, spMove)
+        {
+            
         }
 
         public Move(Move move)

@@ -63,7 +63,7 @@ namespace Romp
     }
 
     [Flags]
-    enum SpecialtyMove : Byte
+    enum SpecialtyMove : ushort
     {
         Quiet = 0x0,
         DoublePawnPush = 0x1,
@@ -71,6 +71,7 @@ namespace Romp
         QueensideCastle = 0x3,
         Capture = 0x4,
         EnpassantCapture = 0x5,
+        UnknownPromotion = 0x7,
         KnightPromotion = 0x8,
         BishopPromotion = 0x9,
         RookPromotion = 0xA,
