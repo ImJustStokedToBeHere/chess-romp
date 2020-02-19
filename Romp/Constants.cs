@@ -88,53 +88,41 @@ namespace Romp
             "A8", "B8", "C8", "D8", "E8", "F8", "G8", "H8"
         };
 
-        public static readonly ulong[] ClearRanks = 
-        {
-            0xFFFFFFFFFFFFFF00,
-            0xFFFFFFFFFFFF00FF,
-            0xFFFFFFFFFF00FFFF,
-            0xFFFFFFFF00FFFFFF,
-            0xFFFFFF00FFFFFFFF,
-            0xFFFF00FFFFFFFFFF,
-            0xFF00FFFFFFFFFFFF,
-            0x00FFFFFFFFFFFFFF
-        };
+        public const ulong CLEAR_RANK_1 = 0xFFFFFFFFFFFFFF00;
+        public const ulong CLEAR_RANK_2 = 0xFFFFFFFFFFFF00FF;
+        public const ulong CLEAR_RANK_3 = 0xFFFFFFFFFF00FFFF;
+        public const ulong CLEAR_RANK_4 = 0xFFFFFFFF00FFFFFF;
+        public const ulong CLEAR_RANK_5 = 0xFFFFFF00FFFFFFFF;
+        public const ulong CLEAR_RANK_6 = 0xFFFF00FFFFFFFFFF;
+        public const ulong CLEAR_RANK_7 = 0xFF00FFFFFFFFFFFF;
+        public const ulong CLEAR_RANK_8 = 0x00FFFFFFFFFFFFFF;
 
-        public static readonly ulong[] MaskRanks =
-        {
-            ~Constants.ClearRanks[0],
-            ~Constants.ClearRanks[1],
-            ~Constants.ClearRanks[2],
-            ~Constants.ClearRanks[3],
-            ~Constants.ClearRanks[4],
-            ~Constants.ClearRanks[5],
-            ~Constants.ClearRanks[6],
-            ~Constants.ClearRanks[7]
-        };
+        public const ulong MASK_RANK_1 = ~CLEAR_RANK_1;
+        public const ulong MASK_RANK_2 = ~CLEAR_RANK_2;
+        public const ulong MASK_RANK_3 = ~CLEAR_RANK_3;
+        public const ulong MASK_RANK_4 = ~CLEAR_RANK_4;
+        public const ulong MASK_RANK_5 = ~CLEAR_RANK_5;
+        public const ulong MASK_RANK_6 = ~CLEAR_RANK_6;
+        public const ulong MASK_RANK_7 = ~CLEAR_RANK_7;
+        public const ulong MASK_RANK_8 = ~CLEAR_RANK_8;
 
-        public static readonly ulong[] ClearFiles = 
-        {
-            0xFEFEFEFEFEFEFEFE,
-            0xFDFDFDFDFDFDFDFD,
-            0xFBFBFBFBFBFBFBFB,
-            0xF7F7F7F7F7F7F7F7,
-            0xEFEFEFEFEFEFEFEF,
-            0xDFDFDFDFDFDFDFDF,
-            0xBFBFBFBFBFBFBFBF,
-            0x7F7F7F7F7F7F7F7F
-        };
+        public const ulong CLEAR_FILE_1 = 0xFEFEFEFEFEFEFEFE;
+        public const ulong CLEAR_FILE_2 = 0xFDFDFDFDFDFDFDFD;
+        public const ulong CLEAR_FILE_3 = 0xFBFBFBFBFBFBFBFB;
+        public const ulong CLEAR_FILE_4 = 0xF7F7F7F7F7F7F7F7;
+        public const ulong CLEAR_FILE_5 = 0xEFEFEFEFEFEFEFEF;
+        public const ulong CLEAR_FILE_6 = 0xDFDFDFDFDFDFDFDF;
+        public const ulong CLEAR_FILE_7 = 0xBFBFBFBFBFBFBFBF;
+        public const ulong CLEAR_FILE_8 = 0x7F7F7F7F7F7F7F7F;
 
-        public static readonly ulong[] MaskFiles =
-        {
-            ~Constants.ClearFiles[0],
-            ~Constants.ClearFiles[1],
-            ~Constants.ClearFiles[2],
-            ~Constants.ClearFiles[3],
-            ~Constants.ClearFiles[4],
-            ~Constants.ClearFiles[5],
-            ~Constants.ClearFiles[6],
-            ~Constants.ClearFiles[7]
-        };
+        public const ulong MASK_FILE_1 = ~CLEAR_FILE_1;
+        public const ulong MASK_FILE_2 = ~CLEAR_FILE_2;
+        public const ulong MASK_FILE_3 = ~CLEAR_FILE_3;
+        public const ulong MASK_FILE_4 = ~CLEAR_FILE_4;
+        public const ulong MASK_FILE_5 = ~CLEAR_FILE_5;
+        public const ulong MASK_FILE_6 = ~CLEAR_FILE_6;
+        public const ulong MASK_FILE_7 = ~CLEAR_FILE_7;
+        public const ulong MASK_FILE_8 = ~CLEAR_FILE_8;
 
         public const ulong BLACK_SQUARES = 0xAA55AA55AA55AA55;
         public const ulong WHITE_SQUARES = ~BLACK_SQUARES;

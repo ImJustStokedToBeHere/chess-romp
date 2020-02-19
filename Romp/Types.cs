@@ -7,30 +7,30 @@ namespace Romp
     [Flags]
     enum CastlingRights
     {
-        WhiteKing,
-        WhiteQueen,
-        BlackKing,
-        BlackQueen
+        WhiteKing = 0x01,
+        WhiteQueen = 0x02,
+        BlackKing = 0x04,
+        BlackQueen = 0x08
     }
 
     [Flags]
     enum Color
     {
-        White,
-        Black,
-        All
+        White = 1,
+        Black = 2,
+        All = White | Black
     }
 
     enum Piece
     {
         None,
-        WPawn = 1,
+        WPawn = 0x01,
         WKnight,
         WBishop,
         WRook,
         WQueen,
         WKing,
-        BPawn = 9,
+        BPawn = 0x09,
         BKnight,
         BBishop,
         BRook,
