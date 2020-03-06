@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Romp
 {
     [Flags]
-    enum CastlingRights
+    internal enum CastlingRights
     {
         WhiteKing = 0x01,
         WhiteQueen = 0x02,
@@ -14,14 +12,14 @@ namespace Romp
     }
 
     [Flags]
-    enum Color
+    internal enum Color
     {
         White = 1,
         Black = 2,
         All = White | Black
     }
 
-    enum Piece
+    internal enum Piece
     {
         None,
         WPawn = 0x01,
@@ -39,19 +37,27 @@ namespace Romp
     }
 
     [Flags]
-    enum Direction
+    internal enum Direction
     {
-        North = 8,
-        East = 1,
-        South = -North,
-        West = -East,
-        NorthEast = North + East,
-        SouthEast = South + East,
-        SouthWest = South + West,
-        NorthWest = North + West
+        //North = 8,
+        //East = 1,
+        //South = -North,
+        //West = -East,
+        //NorthEast = North + East,
+        //SouthEast = South + East,
+        //SouthWest = South + West,
+        //NorthWest = North + West
+        North,
+        South,
+        East,
+        West,
+        NorthEast,
+        NorthWest,
+        SouthEast,
+        SouthWest
     }
 
-    enum PieceType : Byte
+    internal enum PieceType : Byte
     {
         Pawn,
         Rook,
@@ -63,36 +69,28 @@ namespace Romp
     }
 
     [Flags]
-    enum SpecialtyMove : ushort
+    internal enum MoveType 
     {
-        Quiet = 0x0,
+        Null = 0x0,        
         DoublePawnPush = 0x1,
         KingsideCastle = 0x2,
-        QueensideCastle = 0x3,
-        Capture = 0x4,
-        EnpassantCapture = 0x5,
-        UnknownPromotion = 0x7,
-        KnightPromotion = 0x8,
-        BishopPromotion = 0x9,
-        RookPromotion = 0xA,
-        QueenPromotion = 0xB,
-        KnightPromotionCapture = 0xC,
-        BishopPromotionCapture = 0xD,
-        RookPromotionCapture = 0xE,
-        QueenPromotionCapture = 0xF,
-        Unknown
+        QueensideCastle = 0x4,
+        Capture = 0x10,
+        EnpassantCapture = 0x20,
+        Promotion = 0x40,
+        Quiet = 0x100
     }
 
-    [Flags]
-    enum MoveType
-    {
-        Captures,
-        Quiets,
-        Evasions,
-        Legal
-    }
+    //[Flags]
+    //internal enum MoveType
+    //{
+    //    Captures,
+    //    Quiets,
+    //    Evasions,
+    //    Legal
+    //}
 
-    enum Square : Byte
+    internal enum Square : Byte
     {
         A1, B1, C1, D1, E1, F1, G1, H1,
         A2, B2, C2, D2, E2, F2, G2, H2,
@@ -101,10 +99,11 @@ namespace Romp
         A5, B5, C5, D5, E5, F5, G5, H5,
         A6, B6, C6, D6, E6, F6, G6, H6,
         A7, B7, C7, D7, E7, F7, G7, H7,
-        A8, B8, C8, D8, E8, F8, G8, H8
+        A8, B8, C8, D8, E8, F8, G8, H8,
+        Null
     }
 
-    static class Pieces
+    internal static class Pieces
     {
         public const int WHITE = 0;
         public const int BLACK = 1;
@@ -115,6 +114,25 @@ namespace Romp
         public const int BISHOP = 3;
         public const int QUEEN = 4;
         public const int KING = 5;
+        public const int UNKNOWN = 6;
+    }
+
+    static class TypeExtensions
+    {
+        public static int Integer(this Square s)
+        {
+            return (int)s;
+        }
+
+        public static uint Integer(this Direction d)
+        {
+            return (uint)d;
+        }
+
+        public static Square Square(this int i)
+        {
+            return (Square)i;
+        }
     }
 
     /*

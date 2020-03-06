@@ -512,7 +512,7 @@ namespace Romp
                     break;
             }
 
-            return Bits.CountSetBits(pieces);
+            return BoardUtils.CountSetBits(pieces);
         }
 
         public int Count(PieceType type)
@@ -564,6 +564,12 @@ namespace Romp
         {
             return WhitePawns | WhiteRooks | WhiteKnights | WhiteBishops | WhiteQueen | WhiteKing;
         }
+
+        public GameRecord GetGameRecord()
+        {
+            return null;
+        }
+
 
         #region ENUMERABLE INTERFACE
         //public class BoardEnum : IEnumerator<ulong>

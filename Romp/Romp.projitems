@@ -9,17 +9,20 @@
     <Import_RootNamespace>Romp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Bits.cs" />
+    <Compile Include="..\Romp\BoardUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FENTranslator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameRecord.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameRecordFileReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MoveGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Option.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PortableGameNotation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Move.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Engine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PrecalculatedAttacks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UCI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils.cs" />
-    <Compile Include="..\Romp\StdAlgebraNotationTranslator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Types.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameBoard.cs" />
   </ItemGroup>

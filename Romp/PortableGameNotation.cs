@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
 
 
 namespace Romp
 {
-    class GameRecordFileReader_PGN : GameRecordFileReader
+    internal class GameRecordFileReader_PGN : GameRecordFileReader
     {
         private int _recordIdx = 0;
 
@@ -14,23 +14,23 @@ namespace Romp
             : this(fieldNames, new FileStream(fileName, FileMode.Open)) { }
 
         public GameRecordFileReader_PGN(string[] fieldNames, FileStream file)
-            : base(fieldNames, file) 
+            : base(fieldNames, file)
         {
 
         }
 
         public override GameRecord Get(bool readFromStart)
         {
-            if (readFromStart && FileData.CanSeek)            
+            if (readFromStart && FileData.CanSeek)
                 FileData.Seek(0, SeekOrigin.Begin);
-            
+
             var prevPos = FileData.Position;
             string gameStr = String.Empty;
             var values = new string[FieldNames.Count];
             var idx = 0;
-            
+
             while (!_reader.EndOfStream)
-            {                
+            {
                 char ch = (char)_reader.Read();
                 if (ch == '[')
                 {
@@ -42,14 +42,14 @@ namespace Romp
                     // check that the field name is one which we actually want to import or validate
                     // TODOTODO: don't require field names
                     var result = FieldNames.Find((string s) => { return s == name; });
-                        
+
                     if (result != "")
                     {
                         idx = FieldNames.IndexOf(result);
                     }
                     else
                     {
-                        BadData($"invalid field name: { name}", FileData.Position);                            
+                        BadData($"invalid field name: { name}", FileData.Position);
                     }
 
                     // eat the space folowing the field name
@@ -68,7 +68,7 @@ namespace Romp
                     _ = (char)_reader.Read();
 
                     if (_reader.Peek() != ']')
-                        BadData("badly formatted line, missing close bracket", FileData.Position);                            
+                        BadData("badly formatted line, missing close bracket", FileData.Position);
 
                     // eat the closing ]
                     _ = (char)_reader.Read();
@@ -80,14 +80,14 @@ namespace Romp
                         BadData("badly formatted line, missing new line", FileData.Position);
 
                     // eat the new line
-                    _ = (char)_reader.Read();                    
-                }                    
+                    _ = (char)_reader.Read();
+                }
                 else if (ch == '\n' || ch == '\r')
                 {
                     // there shouldn't be carraige returns, but we will eat them just in case
                     if (ch == '\r')
                         _ = (char)_reader.Read();
-                            
+
                     gameStr = _reader.ReadLine();
 
                     // just incase the last new line is trimmed from the file
@@ -101,15 +101,24 @@ namespace Romp
                     continue;
                 }
             }
-            
+
             return new GameRecord_PGN(FieldNames, new List<string>(values), gameStr, prevPos, _recordIdx++);
         }
     }
 
-    class GameRecord_PGN : GameRecord
+    internal class GameRecord_PGN : GameRecord
     {
         public GameRecord_PGN(List<string> fieldNames, List<string> values, string gameStr, long filePos, int recordIdx)
-            : base(fieldNames, values, gameStr, filePos, recordIdx) {}
+            : base(fieldNames, values, gameStr, filePos, recordIdx) { }
+
+
+        //public GameRecord_PGN(GameRecord rec)
+        //    : base(new List<string>(rec.FieldNames.ToArray()),
+        //          new List<string>(rec.FieldValues.ToArray()),
+        //          new string(rec.GameString),
+        //          rec.FilePos,
+        //          rec.RecordIndex)
+        //{ }
 
         // rebuild the PGN formatted string from the data
         public override string ToString()

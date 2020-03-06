@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Romp
 {
     // Forsyth-Edwards notation
-    static class FENTranslator
+    internal static class FENTranslator
     {
-        public static GameBoard FromFEN(string FEN)
+        public static GameBoard GameBoardFromFEN(string FEN)
         {
             return null;
         }
 
-        public static string ToFEN(GameBoard board)
+        public static GameState GameStateFromFEN(string FEN)
+        {
+            return null;
+        }
+
+        public static string ToFEN(Game game)
         {
             //var boardPos = 56;
             //int idx = 0;
@@ -37,16 +40,13 @@ namespace Romp
             //            return "";
             //        else if ((sq & board[Pieces.WHITE, Pieces.KING]) == board[Pieces.WHITE, Pieces.KING])
             //            return "";
-
-
             //    }
-            //}
+            //}     
+            return String.Empty;
+        }
 
-
-
-
-
-             
+        public static string ToFEN(GameBoard board, GameState state)
+        {
             return String.Empty;
         }
 

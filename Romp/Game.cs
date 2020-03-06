@@ -6,34 +6,33 @@ namespace Romp
 {
     class Game
     {
-        public CastlingRights CastlingRights { get; private set; } = CastlingRights.WhiteKing
+        public CastlingRights CurCastleRights { get; private set; } = CastlingRights.WhiteKing
                 | CastlingRights.WhiteQueen
                 | CastlingRights.BlackKing
                 | CastlingRights.BlackQueen;
 
-        private GameBoard _board;
-        private GameState _state;
-        private MoveGenerator _gen;
-
-
-        public Game()
+        public Game() 
         {
-            _board = new GameBoard(false);
-            _state = new GameState();
-            _gen = new MoveGenerator();
+            
         }
 
-        public Game(string FenStartingPosition)
+        public Game(string fenStartingPosition)            
         {
-
-            _gen = new MoveGenerator();
-
+            Board = FENTranslator.GameBoardFromFEN(fenStartingPosition);
+            State = FENTranslator.GameStateFromFEN(fenStartingPosition);
         }
+
+        public GameBoard Board { get; set; }
+        public GameState State { get; set; }
 
         public string AsFEN()
         {
             return String.Empty;
         }
 
+        public void Apply(Move move)
+        {
+
+        }
     }
 }

@@ -29,32 +29,57 @@ ROOK:
     // pseudo-legal move generator
     class MoveGenerator
     {
-        static MoveGenerator() { }
-        public MoveGenerator() { }
+        private GameBoard _board;
+        private GameState _state;
 
+        private List<Move> _moves = new List<Move>();
 
-        public List<Move> Generate(GameBoard board, GameState state)
+        public MoveGenerator(Game game)
+            : this(game.Board, game.State){ }
+
+        public MoveGenerator(GameBoard board, GameState state)
         {
-            var result = new List<Move>();
-
-            switch (state.SideToMove)
-            {
-                case Color.White:
-                {
-                    GenWhitePawnMoves(board, result);
-                    // GenWhiteRookMoves(board, result);
-
-                    break;
-                }
-                case Color.Black:
-                {
-                    break;
-                }   
-            }
-
-            return result;
+            _board = board;
+            _state = state;
         }
 
+        public List<Move> Moves => _moves;
+
+        // TODOTODO: goin to need to filter the total moves down in the getter
+        public List<Move> LegalMoves => _moves;
+
+        public void Reset()
+        {
+            _moves.Clear();
+        }
+
+
+        //public List<Move> Generate(Game game)
+        //{
+        //    return Generate(game.Board, game.State);
+        //}
+
+        //public List<Move> Generate(GameBoard board, GameState state)
+        //{
+        //    var result = new List<Move>();
+
+        //    switch (state.SideToMove)
+        //    {
+        //        case Color.White:
+        //        {
+        //            GenWhitePawnMoves(board, result);
+        //            // GenWhiteRookMoves(board, result);
+
+        //            break;
+        //        }
+        //        case Color.Black:
+        //        {
+        //            break;
+        //        }   
+        //    }
+
+        //    return result;
+        //}
         
         private void GenWhitePawnMoves(GameBoard board, List<Move> moves)
         {
@@ -75,33 +100,47 @@ ROOK:
                 // get all of the promoted pieces and convert them to moves
                 while (promos > 0)
                 {
-                    var dest = Bits.PopLSB(ref promos);                    
-                    moves.Add(new Move(dest, dest - 8, PieceType.Pawn, SpecialtyMove.UnknownPromotion));
+                    var dest = BoardUtils.PopLSB(ref promos);                    
+                    moves.Add(new Move((dest - 8).Square(), dest.Square(), MoveType.Promotion)
+                    { 
+                        MovingPieceType = PieceType.Pawn
+                    });
                 }
             }
 
             while (movedSingle > 0)
             {
-                var dest = Bits.PopLSB(ref movedSingle);
-                moves.Add(new Move(dest, dest - 8, PieceType.Pawn, SpecialtyMove.Quiet));
+                var dest = BoardUtils.PopLSB(ref movedSingle);
+                moves.Add(new Move((dest - 8).Square(), dest.Square(), MoveType.Quiet) 
+                {
+                     MovingPieceType = PieceType.Pawn
+                });
             }
 
             // double moved pawns
             var movedDouble = pawns << 16;
             // get unoccupied spaces
             unoccupiedSpaces = ~board.AllPieces();
-            // take collisions into account, and make sure that we're only operating in the fourth rank
+            // take collisions into account and make sure that we're only operating in the fourth rank
             movedDouble &= (unoccupiedSpaces & Constants.MASK_RANK_4);
 
             while (movedDouble > 0)
             {
-                var dest = Bits.PopLSB(ref movedDouble);
-                moves.Add(new Move(dest, dest - 16, PieceType.Pawn, SpecialtyMove.DoublePawnPush));
+                var dest = BoardUtils.PopLSB(ref movedDouble);
+                moves.Add(new Move((dest - 16).Square(), dest.Square(), MoveType.DoublePawnPush)
+                {
+                    MovingPieceType = PieceType.Pawn,
+                });
             }
 
             // do right captures
 
             // do left captures
+
+        }
+
+        private void GenWhiteKingMoves(GameBoard board, List<Move> moves)
+        {
 
         }
         

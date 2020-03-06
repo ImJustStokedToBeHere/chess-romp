@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Romp
 {
-    class GameRecord
+    internal class GameRecord
     {
         public readonly List<string> FieldNames;
         public readonly List<string> FieldValues;
@@ -21,6 +20,6 @@ namespace Romp
             RecordIndex = recordIdx;
         }
 
-        public override string ToString() => throw new NotImplementedException();   
+        public override string ToString() => throw new NotImplementedException();
     }
 }

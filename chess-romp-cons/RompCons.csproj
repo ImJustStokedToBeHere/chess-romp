@@ -5,9 +5,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>RompCons</RootNamespace>
     <AssemblyName>romp</AssemblyName>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>
 
   <Import Project="..\Romp\Romp.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20104.2" />
+  </ItemGroup>
 
 </Project>
