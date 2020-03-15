@@ -3,16 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chess-romp-wpf", "chess-romp-wpf\chess-romp-wpf.csproj", "{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RompApp", "chess-romp-wpf\RompApp.csproj", "{2DAC7C9F-2BEB-4797-BB1D-038601F5CEFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chess-romp-cons", "chess-romp-cons\chess-romp-cons.csproj", "{4043AD4F-83DF-4D62-A875-39108CCCA780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RompCons", "chess-romp-cons\RompCons.csproj", "{4043AD4F-83DF-4D62-A875-39108CCCA780}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Romp", "Romp\Romp.shproj", "{8AAB9475-7101-44D7-8F64-2367AA3B710F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{204E2C2D-D491-4F06-BC89-D145BF97AA8E}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
+		data\test.pgn = data\test.pgn
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RompTest", "chess-romp-unit-test\RompTest.csproj", "{E2A1E103-676C-4199-947F-C7A076783001}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -31,6 +34,10 @@ Global
 		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4043AD4F-83DF-4D62-A875-39108CCCA780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2A1E103-676C-4199-947F-C7A076783001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A1E103-676C-4199-947F-C7A076783001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A1E103-676C-4199-947F-C7A076783001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A1E103-676C-4199-947F-C7A076783001}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

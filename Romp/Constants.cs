@@ -1,15 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Romp
 {
-    static class Constants
-    {
-        public const Byte NULL_SQUARE = 65;
+    internal static class Constants
+    {        
+        public const int SQUARE_COUNT = 64;
+        public const Byte NULL_SQUARE = SQUARE_COUNT;
 
-        public static UInt64[] BitPositions = 
-        {
+        public const string FEN_START_STRING = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+
+        public const ulong CLEAR_RANK_1 = 0xFFFFFFFFFFFFFF00;
+        public const ulong CLEAR_RANK_2 = 0xFFFFFFFFFFFF00FF;
+        public const ulong CLEAR_RANK_3 = 0xFFFFFFFFFF00FFFF;
+        public const ulong CLEAR_RANK_4 = 0xFFFFFFFF00FFFFFF;
+        public const ulong CLEAR_RANK_5 = 0xFFFFFF00FFFFFFFF;
+        public const ulong CLEAR_RANK_6 = 0xFFFF00FFFFFFFFFF;
+        public const ulong CLEAR_RANK_7 = 0xFF00FFFFFFFFFFFF;
+        public const ulong CLEAR_RANK_8 = 0x00FFFFFFFFFFFFFF;
+
+        public const ulong MASK_RANK_1 = ~CLEAR_RANK_1;
+        public const ulong MASK_RANK_2 = ~CLEAR_RANK_2;
+        public const ulong MASK_RANK_3 = ~CLEAR_RANK_3;
+        public const ulong MASK_RANK_4 = ~CLEAR_RANK_4;
+        public const ulong MASK_RANK_5 = ~CLEAR_RANK_5;
+        public const ulong MASK_RANK_6 = ~CLEAR_RANK_6;
+        public const ulong MASK_RANK_7 = ~CLEAR_RANK_7;
+        public const ulong MASK_RANK_8 = ~CLEAR_RANK_8;
+
+        public const ulong CLEAR_FILE_A = 0xFEFEFEFEFEFEFEFE;
+        public const ulong CLEAR_FILE_B = 0xFDFDFDFDFDFDFDFD;
+        public const ulong CLEAR_FILE_C = 0xFBFBFBFBFBFBFBFB;
+        public const ulong CLEAR_FILE_D = 0xF7F7F7F7F7F7F7F7;
+        public const ulong CLEAR_FILE_E = 0xEFEFEFEFEFEFEFEF;
+        public const ulong CLEAR_FILE_F = 0xDFDFDFDFDFDFDFDF;
+        public const ulong CLEAR_FILE_G = 0xBFBFBFBFBFBFBFBF;
+        public const ulong CLEAR_FILE_H = 0x7F7F7F7F7F7F7F7F;
+
+        public const ulong MASK_FILE_A = ~CLEAR_FILE_A;
+        public const ulong MASK_FILE_B = ~CLEAR_FILE_B;
+        public const ulong MASK_FILE_C = ~CLEAR_FILE_C;
+        public const ulong MASK_FILE_D = ~CLEAR_FILE_D;
+        public const ulong MASK_FILE_E = ~CLEAR_FILE_E;
+        public const ulong MASK_FILE_F = ~CLEAR_FILE_F;
+        public const ulong MASK_FILE_G = ~CLEAR_FILE_G;
+        public const ulong MASK_FILE_H = ~CLEAR_FILE_H;
+
+        public const ulong BLACK_SQUARES = 0xAA55AA55AA55AA55;
+        public const ulong WHITE_SQUARES = ~BLACK_SQUARES;
+
+        public static ulong[] BitPositions =
+{
              0x0000000000000001,
              0x0000000000000002,
              0x0000000000000004,
@@ -88,55 +129,26 @@ namespace Romp
             "A8", "B8", "C8", "D8", "E8", "F8", "G8", "H8"
         };
 
-        public static readonly UInt64[] ClearRanks = 
+        public static readonly List<char> Ranks = new List<char> { '1', '2', '3', '4', '5', '6', '7', '8' };
+        public static readonly List<char> Files = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+
+        public static readonly Dictionary<PieceType, char> InvertedPieceLookup = new Dictionary<PieceType, char>
         {
-            0xFFFFFFFFFFFFFF00,
-            0xFFFFFFFFFFFF00FF,
-            0xFFFFFFFFFF00FFFF,
-            0xFFFFFFFF00FFFFFF,
-            0xFFFFFF00FFFFFFFF,
-            0xFFFF00FFFFFFFFFF,
-            0xFF00FFFFFFFFFFFF,
-            0x00FFFFFFFFFFFFFF
+            {  PieceType.King, 'K' },
+            {  PieceType.Queen, 'Q' },
+            {  PieceType.Bishop, 'B' },
+            {  PieceType.Knight,'N' },
+            {  PieceType.Rook, 'R' }
         };
 
-        public static readonly UInt64[] MaskRanks =
+        public static readonly Dictionary<char, PieceType> PieceLookup = new Dictionary<char, PieceType>
         {
-            ~Constants.ClearRanks[0],
-            ~Constants.ClearRanks[1],
-            ~Constants.ClearRanks[2],
-            ~Constants.ClearRanks[3],
-            ~Constants.ClearRanks[4],
-            ~Constants.ClearRanks[5],
-            ~Constants.ClearRanks[6],
-            ~Constants.ClearRanks[7]
+            { 'K', PieceType.King },
+            { 'Q', PieceType.Queen },
+            { 'B', PieceType.Bishop },
+            { 'N', PieceType.Knight },
+            { 'R', PieceType.Rook }
         };
-
-        public static readonly UInt64[] ClearFiles = 
-        {
-            0xFEFEFEFEFEFEFEFE,
-            0xFDFDFDFDFDFDFDFD,
-            0xFBFBFBFBFBFBFBFB,
-            0xF7F7F7F7F7F7F7F7,
-            0xEFEFEFEFEFEFEFEF,
-            0xDFDFDFDFDFDFDFDF,
-            0xBFBFBFBFBFBFBFBF,
-            0x7F7F7F7F7F7F7F7F
-        };
-
-        public static readonly UInt64[] MaskFiles =
-        {
-            ~Constants.ClearFiles[0],
-            ~Constants.ClearFiles[1],
-            ~Constants.ClearFiles[2],
-            ~Constants.ClearFiles[3],
-            ~Constants.ClearFiles[4],
-            ~Constants.ClearFiles[5],
-            ~Constants.ClearFiles[6],
-            ~Constants.ClearFiles[7]
-        };
-
-
 
     }
 }

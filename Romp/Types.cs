@@ -1,84 +1,79 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Romp
 {
-    enum Color
+    [Flags]
+    internal enum CastlingRights
     {
-        Black,
-        White
+        WhiteKing = 0x01,
+        WhiteQueen = 0x02,
+        BlackKing = 0x04,
+        BlackQueen = 0x08
     }
-
-    enum Piece
+    
+    internal enum Color
     {
-        None,
-        WPawn = 1,
-        WKnight,
-        WBishop,
-        WRook,
-        WQueen,
-        WKing,
-        BPawn = 9,
-        BKnight,
-        BBishop,
-        BRook,
-        BQueen,
-        BKing
+        White = 0,
+        Black = 1,
+        All = 2
     }
 
     [Flags]
-    enum Direction
+    internal enum Direction
     {
-        North = 8,
-        East = 1,
-        South = -North,
-        West = -East,
-        NorthEast = North + East,
-        SouthEast = South + East,
-        SouthWest = South + West,
-        NorthWest = North + West
+        //North = 8,
+        //East = 1,
+        //South = -North,
+        //West = -East,
+        //NorthEast = North + East,
+        //SouthEast = South + East,
+        //SouthWest = South + West,
+        //NorthWest = North + West
+        North,
+        South,
+        East,
+        West,
+        NorthEast,
+        NorthWest,
+        SouthEast,
+        SouthWest
     }
 
-    enum PieceType : Byte
+    [Flags]
+    internal enum PieceType : Byte
     {
-        Pawn,
-        Rook,
-        Knight,
-        Bishop,
-        Queen,
-        King,
-        Unknown
+        Unknown = 0x0,
+        Pawn = 0x1,
+        Rook = 0x2,
+        Knight = 0x4,
+        Bishop = 0x8,
+        Queen = 0x10,
+        King = 0x20
     }
 
-    enum SpecialtyMove : Byte
+    [Flags]
+    internal enum MoveType 
     {
-        Quiet = 0x0,
+        Null = 0x0,        
         DoublePawnPush = 0x1,
         KingsideCastle = 0x2,
-        QueensideCastle = 0x3,
-        Capture = 0x4,
-        EnpassantCapture = 0x5,
-        KnightPromotion = 0x8,
-        BishopPromotion = 0x9,
-        RookPromotion = 0xA,
-        QueenPromotion = 0xB,
-        KnightPromotionCapture = 0xC,
-        BishopPromotionCapture = 0xD,
-        RookPromotionCapture = 0xE,
-        QueenPromotionCapture = 0xF,
-        Unknown
+        QueensideCastle = 0x4,
+        Capture = 0x10,
+        EnpassantCapture = 0x20,
+        Promotion = 0x40,
+        Quiet = 0x100
     }
 
-    enum MoveType
-    {
-        Captures,
-        Quiets,
-        Evasions,
-        Legal
-    }
+    //[Flags]
+    //internal enum MoveType
+    //{
+    //    Captures,
+    //    Quiets,
+    //    Evasions,
+    //    Legal
+    //}
 
-    enum Square : Byte
+    internal enum Square : Byte
     {
         A1, B1, C1, D1, E1, F1, G1, H1,
         A2, B2, C2, D2, E2, F2, G2, H2,
@@ -87,57 +82,82 @@ namespace Romp
         A5, B5, C5, D5, E5, F5, G5, H5,
         A6, B6, C6, D6, E6, F6, G6, H6,
         A7, B7, C7, D7, E7, F7, G7, H7,
-        A8, B8, C8, D8, E8, F8, G8, H8
+        A8, B8, C8, D8, E8, F8, G8, H8,
+        Null
     }
 
-    enum Rank : Byte
+    //internal static class Pieces
+    //{
+    //    public const int WHITE = 0;
+    //    public const int BLACK = 1;
+
+    //    public const int PAWN = 0;
+    //    public const int ROOK = 1;
+    //    public const int KNIGHT = 2;
+    //    public const int BISHOP = 3;
+    //    public const int QUEEN = 4;
+    //    public const int KING = 5;
+    //    public const int UNKNOWN = 6;
+    //}
+
+    static class TypeExtensions
     {
-        _1 = 0,
-        _2 = 1,
-        _3 = 2,
-        _4 = 3,
-        _5 = 4,
-        _6 = 5,
-        _7 = 6,
-        _8 = 7
+        public static int Integer(this Square s)
+        {
+            return (int)s;
+        }
+
+        public static uint Integer(this Direction d)
+        {
+            return (uint)d;
+        }
+
+        public static Square Square(this int i)
+        {
+            return (Square)i;
+        }
+
+        public static Square Square(this ulong i)
+        {
+            return (Square)i;
+        }
+
+        public static int Index(this PieceType p)
+        {
+            return (int)BoardUtils.ScanBitsForward((ulong)p);
+        }
+
+        public static int Index(this Color c)
+        {
+            return (int)c;
+        }
     }
 
-    enum File : Byte
-    {
-        _A = 0,
-        _B = 1,
-        _C = 2,
-        _D = 3,
-        _E = 4,
-        _F = 5,
-        _G = 6,
-        _H = 7
-    }
+    /*
+     Removing this stuff as it isn't as useful as imagined. It's not very functional.
 
-    static class Utils
-    {
-        public static File FileOf(Square s)
-        {
-            return (File)((Byte)s & 7);
-        }
+     */
+    //enum Rank : Byte
+    //{
+    //    _1 = 0,
+    //    _2 = 1,
+    //    _3 = 2,
+    //    _4 = 3,
+    //    _5 = 4,
+    //    _6 = 5,
+    //    _7 = 6,
+    //    _8 = 7
+    //}
 
-        public static Rank RankOf(Square s)
-        {
-            return (Rank)((Byte)s >> 3);
-        }
-
-        public static Direction PawnPush(Color c)
-        {
-            return c == Color.White ? Direction.North : Direction.South;
-        }
-
-        public static UInt64 ClearRank(Rank r, UInt64 board)
-        {
-            return board & Constants.ClearRanks[(int)r];
-        }
-
-
-    }
-
-
+    //enum File : Byte
+    //{
+    //    A = 0,
+    //    B = 1,
+    //    C = 2,
+    //    D = 3,
+    //    E = 4,
+    //    F = 5,
+    //    G = 6,
+    //    H = 7
+    //}
 }

@@ -9,9 +9,24 @@
     <Import_RootNamespace>Romp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)MersenneTwister64.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MoveSearch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TranspositionTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ZobristKey.cs" />
+    <Compile Include="..\Romp\BoardUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameRecords.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FENTranslator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameRecord.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameRecordFileReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MoveGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Option.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PortableGameNotation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Move.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Engine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PieceAttacks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UCI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Types.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameBoard.cs" />
   </ItemGroup>
