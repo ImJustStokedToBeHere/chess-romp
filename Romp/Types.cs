@@ -10,30 +10,12 @@ namespace Romp
         BlackKing = 0x04,
         BlackQueen = 0x08
     }
-
-    [Flags]
+    
     internal enum Color
     {
-        White = 1,
-        Black = 2,
-        All = White | Black
-    }
-
-    internal enum Piece
-    {
-        None,
-        WPawn = 0x01,
-        WKnight,
-        WBishop,
-        WRook,
-        WQueen,
-        WKing,
-        BPawn = 0x09,
-        BKnight,
-        BBishop,
-        BRook,
-        BQueen,
-        BKing
+        White = 0,
+        Black = 1,
+        All = 2
     }
 
     [Flags]
@@ -57,15 +39,16 @@ namespace Romp
         SouthWest
     }
 
+    [Flags]
     internal enum PieceType : Byte
     {
-        Pawn,
-        Rook,
-        Knight,
-        Bishop,
-        Queen,
-        King,
-        Unknown
+        Unknown = 0x0,
+        Pawn = 0x1,
+        Rook = 0x2,
+        Knight = 0x4,
+        Bishop = 0x8,
+        Queen = 0x10,
+        King = 0x20
     }
 
     [Flags]
@@ -103,19 +86,19 @@ namespace Romp
         Null
     }
 
-    internal static class Pieces
-    {
-        public const int WHITE = 0;
-        public const int BLACK = 1;
+    //internal static class Pieces
+    //{
+    //    public const int WHITE = 0;
+    //    public const int BLACK = 1;
 
-        public const int PAWN = 0;
-        public const int ROOK = 1;
-        public const int KNIGHT = 2;
-        public const int BISHOP = 3;
-        public const int QUEEN = 4;
-        public const int KING = 5;
-        public const int UNKNOWN = 6;
-    }
+    //    public const int PAWN = 0;
+    //    public const int ROOK = 1;
+    //    public const int KNIGHT = 2;
+    //    public const int BISHOP = 3;
+    //    public const int QUEEN = 4;
+    //    public const int KING = 5;
+    //    public const int UNKNOWN = 6;
+    //}
 
     static class TypeExtensions
     {
@@ -132,6 +115,21 @@ namespace Romp
         public static Square Square(this int i)
         {
             return (Square)i;
+        }
+
+        public static Square Square(this ulong i)
+        {
+            return (Square)i;
+        }
+
+        public static int Index(this PieceType p)
+        {
+            return (int)BoardUtils.ScanBitsForward((ulong)p);
+        }
+
+        public static int Index(this Color c)
+        {
+            return (int)c;
         }
     }
 

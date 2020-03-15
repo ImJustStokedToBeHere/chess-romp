@@ -61,11 +61,13 @@ namespace Romp
         // DUNNO: not sure if I should inherit or include Move in here or just duplicate the fields
         // private Move _move = null;
 
-        public Move(Square src, Square dest, MoveType moveType = MoveType.Quiet)
+        public Move(Square src, Square dest, PieceType movingPieceType, Color movingPieceColor, MoveType moveType = MoveType.Quiet)
         {
             Src = src;
             Dest = dest;
             MvType = moveType;
+            MovingPieceType = movingPieceType;
+            MovingPieceColor = movingPieceColor;
         }
 
         //public ExtendedMove(Move move, MoveType moveType)
@@ -80,6 +82,7 @@ namespace Romp
             MovingPieceType = move.MovingPieceType;
             CapturedPieceType = move.CapturedPieceType;
             PromotionPieceType = move.PromotionPieceType;
+            MovingPieceColor = move.MovingPieceColor;
             MvType = move.MvType;
             Src = move.Src;
             Dest = move.Dest;
@@ -92,8 +95,11 @@ namespace Romp
         public MoveType MvType { get; set; } = MoveType.Null;        
         public Square Src { get; set; } = Square.Null;
         public Square Dest { get; set; } = Square.Null;
+
         public string SrcCoord => Constants.CoordinateStrs[(int)Src];
         public string DestCoord => Constants.CoordinateStrs[(int)Dest];
+        public Color MovingPieceColor { get; set; } = Color.All;
+        public Color CapturedPieceColor => (MovingPieceColor == Color.White) ? Color.Black :(( MovingPieceColor == Color.Black) ? Color.White : Color.All);
 
         public string GetNotation(Game game, NotationFormat fmt = NotationFormat.Coord)
         {

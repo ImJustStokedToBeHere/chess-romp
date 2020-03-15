@@ -34,12 +34,12 @@ namespace Romp
             public int _valueInt;
         }
 
-        public static readonly Dictionary<string, Option> OptionsLookup = new Dictionary<string, Option>
-            {
-                { "ownbook", new Option(false, null) },
-                { "bookpath", new Option("book.bin", null) },
-                { "ponder", new Option(false, null) },
-            };
+        public static readonly Dictionary<string, Option> GlobalOptionLookup = new Dictionary<string, Option>
+        {
+            { "ownbook", new Option(false, null) },
+            { "bookpath", new Option("book.bin", null) },
+            { "ponder", new Option(false, null) },
+        };
 
 
         public readonly int MinValue;
@@ -149,7 +149,7 @@ namespace Romp
         {
             var strBld = new StringBuilder();
 
-            foreach (var item in OptionsLookup)
+            foreach (var item in GlobalOptionLookup)
             {
                 strBld.AppendLine($"");
             }

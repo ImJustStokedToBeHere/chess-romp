@@ -237,10 +237,10 @@ namespace Romp
                 // not sure if it's faster to loop or index and search the move list
                 // but we're going to loop for now because that is what stockfish does
                 // and thats the best conventional engine right now
-
-                foreach (var move in moveGen.LegalMoves)
+                var moves = moveGen.GenerateMoves();
+                foreach (var move in moveGen.GetLegalMoves(moves))
                 {
-                    if (move.GetNotation(game) == tokens[idx])
+                    if (move.GetNotation(game, NotationFormat.Coord) == tokens[idx])
                         game.Apply(move);
                 }
             }
@@ -253,6 +253,9 @@ namespace Romp
         private static void Go(string[] tokens)
         {
             // there are a zillion options that go has to support
+            
+
+
         }
 
         /// <summary>
